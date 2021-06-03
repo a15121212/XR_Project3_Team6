@@ -11,20 +11,17 @@ public class ShowPlayerRank : MonoBehaviour
 
     private Vector3 P1_position;
     private Vector3 P2_position;
-    private Text P1Text;
-    private Text P2Text;
+    
+    private GameObject First;
+    private GameObject Second;
 
     private Text temp;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
+        First = GameObject.Find("First");
+        Second = GameObject.Find("Second");
         
-        P1Text = (GameObject.Find("Player1Rank")).GetComponent<Text>();
-
-        //  P2Text = GameObject.Find("Player2Rank");
-        P1Text.text = "1st";
-        // P2Text.text = "1st";
-
     }
   
 
@@ -35,13 +32,14 @@ public class ShowPlayerRank : MonoBehaviour
         P2_position = Player2.transform.position;
         if( P1_position.z >= P2_position.z)
         {
-            P1Text.text = "1st";
-            //P2Text.text = "2nd";
+            First.SetActive(true);
+            Second.SetActive(false);
+
         }
         else
         {
-            P1Text.text = "2nd";
-            //P2Text.text = "1st";
+            First.SetActive(false);
+            Second.SetActive(true);
 
         }
 
